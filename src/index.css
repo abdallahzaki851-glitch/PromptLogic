@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-bg: #050505;
+  --color-brand-aside: #0c0c0c;
+  --color-brand-main: #080808;
+  --color-brand-border: #1a1a1a;
+  --color-brand-border-light: #2a2a2a;
+  --color-brand-card: #121212;
+  --color-brand-user-card: #1a1a1a;
+  --color-brand-text: #e0e0e0;
+  --color-brand-text-dim: #888;
+}
+
+body {
+  @apply bg-brand-bg text-brand-text font-sans antialiased;
+}
+
+.sophisticated-gradient {
+  background: radial-gradient(circle at 50% 0%, #111 0%, #080808 70%);
+}
+
+.glass-nav {
+  @apply bg-brand-aside/80 backdrop-blur-md border-b border-brand-border;
+}
+
+.sidebar-container {
+  @apply bg-brand-aside border-r border-brand-border;
+}
+
+.btn-new-chat {
+  @apply bg-brand-border border border-brand-border-light rounded-xl hover:bg-[#222] transition-all;
+}
+
+.message-ai {
+  @apply bg-brand-card border border-brand-border p-4 rounded-2xl rounded-tl-none shadow-xl;
+}
+
+.message-user {
+  @apply bg-brand-user-card border border-brand-border-light p-4 rounded-2xl rounded-tr-none text-white shadow-sm;
+}
+
+.chat-item {
+  @apply p-3 hover:bg-[#111] rounded-lg cursor-pointer transition-all border-l-2 border-transparent;
+}
+
+.chat-item.active {
+  @apply bg-[#111] border-blue-500;
+}
+
+.input-container {
+  @apply bg-brand-card border border-brand-border rounded-2xl focus-within:border-blue-500/50 transition-all;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-[#222] rounded-full;
+}

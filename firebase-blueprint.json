@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and subscription status",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string" },
+        "email": { "type": "string" },
+        "isAdmin": { "type": "boolean" },
+        "subscriptionActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "username", "email", "isAdmin", "subscriptionActive", "createdAt"]
+    },
+    "Chat": {
+      "title": "Chat Conversation",
+      "description": "A single chat thread",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "createdAt"]
+    },
+    "Message": {
+      "title": "Chat Message",
+      "description": "A message within a chat",
+      "type": "object",
+      "properties": {
+        "chatId": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "assistant"] },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["chatId", "role", "content", "createdAt"]
+    },
+    "Settings": {
+      "title": "Global Settings",
+      "description": "Platform-wide configurations",
+      "type": "object",
+      "properties": {
+        "systemPrompt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "Conversations"
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages within a conversation"
+    },
+    "/settings/global": {
+      "schema": "Settings",
+      "description": "Global platform configurations"
+    }
+  }
+}
